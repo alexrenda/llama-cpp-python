@@ -207,6 +207,7 @@ class Llama:
         n_ctx: int = 512,
         n_parts: int = -1,
         n_gpu_layers: int = 0,
+        tensor_split: List[float] = [0],
         seed: int = 1337,
         f16_kv: bool = True,
         logits_all: bool = False,
@@ -254,6 +255,7 @@ class Llama:
         self.params = llama_cpp.llama_context_default_params()
         self.params.n_ctx = n_ctx
         self.params.n_gpu_layers = n_gpu_layers
+        self.params.tensor_split = tensor_split
         self.params.seed = seed
         self.params.f16_kv = f16_kv
         self.params.logits_all = logits_all
